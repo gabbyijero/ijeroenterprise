@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="IJERO ENTERPRISE - Premium ergonomic office chairs, office tables, electric height-adjustable desks, NVIDIA gaming CPUs and computer accessories in Ghana."/>
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"}catch(e){}</script>
   <title>IJERO ENTERPRISE | Workspace & Gaming Solutions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -430,7 +431,127 @@
       .scroll-top { bottom: 20px; right: 20px; }
       .cart-drawer { max-width: 100%; }
     }
-  </style>
+  
+/* ===== MODERN CARD SYSTEM ===== */
+:root{--glass:rgba(255,255,255,.06);--glass-b:rgba(255,255,255,.14);--nd:#04080f;--nl:#172a4b}
+/* Bento */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:18px}
+.bento-card{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--border);cursor:pointer;background:var(--dark3);display:flex;align-items:flex-end;transition:transform .35s,box-shadow .35s}
+.bento-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.bento-card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(5,10,20,.92));z-index:1}
+.bento-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.bento-card:hover img{transform:scale(1.08)}
+.bento-info{position:relative;z-index:2;padding:20px;width:100%}
+.bento-info h3{font-family:var(--font-display);font-size:1.15rem}
+.bento-info span{font-size:.8rem;color:var(--cyan)}
+.b-lg{grid-column:span 2;grid-row:span 2}.b-wide{grid-column:span 2}
+.bento-card.neon{border-color:rgba(0,212,255,.5);box-shadow:0 0 26px rgba(0,212,255,.18)}
+.bento-card.stat{background:linear-gradient(135deg,var(--blue),var(--cyan));align-items:center;cursor:default}
+.bento-card.stat::before{display:none}
+.bento-card.stat:hover{transform:none}
+/* Gradient stat cards */
+.hero-stats{gap:14px;flex-wrap:wrap}
+.hero-stats .stat{padding:14px 22px;border-radius:18px;background:linear-gradient(135deg,rgba(26,109,255,.38),rgba(0,212,255,.1));border:1px solid var(--glass-b);backdrop-filter:blur(10px)}
+/* Glass: hero info bar, panels, form, features */
+.hero-slide-img{height:100%}
+.hero-slide-info{position:absolute;left:12px;right:12px;bottom:12px;border-radius:16px;background:rgba(12,21,36,.55);backdrop-filter:blur(16px);border:1px solid var(--glass-b)}
+.modal,.cart-drawer{background:rgba(12,21,36,.82);backdrop-filter:blur(24px);border:1px solid var(--glass-b)}
+.contact-form,.feature-card{background:var(--glass);backdrop-filter:blur(14px);border:1px solid var(--glass-b)}
+.feature-card:hover{box-shadow:0 0 30px var(--blue-glow)}
+.contact-item{border-radius:16px}
+/* Product cards: material elevation + 3D tilt */
+.products-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));perspective:1400px}
+.product-card{border-radius:22px;background:linear-gradient(160deg,#14253f,#0b1424);box-shadow:0 2px 4px rgba(0,0,0,.3),0 14px 30px rgba(0,0,0,.35);transform-style:preserve-3d}
+.product-card.reveal{transition:opacity .7s ease,transform .15s ease-out,box-shadow .3s,border-color .3s}
+.product-card:hover{box-shadow:0 26px 54px rgba(0,0,0,.5),0 0 0 1px rgba(26,109,255,.35)}
+.product-badge{background:rgba(5,10,20,.55);backdrop-filter:blur(8px);border:1px solid var(--glass-b);color:var(--cyan)}
+.product-footer{border-top:1px dashed var(--border)}
+/* Neon variant for gaming PCs */
+.product-card.neon{border-color:rgba(0,212,255,.4);box-shadow:0 0 0 1px rgba(0,212,255,.2),0 0 22px rgba(0,212,255,.14)}
+.product-card.neon:hover{box-shadow:0 0 0 1px var(--cyan),0 0 38px rgba(0,212,255,.4)}
+.product-card.neon .product-cat{color:var(--cyan)}
+/* Neumorphic controls */
+.arrow-btn,.qty-btn,.modal-qty-btn,.cart-close,.social-link,.cat-tab{background:var(--dark3);border:none;box-shadow:5px 5px 12px var(--nd),-4px -4px 10px var(--nl)}
+.arrow-btn:hover,.qty-btn:hover,.modal-qty-btn:hover,.social-link:hover,.cat-tab:hover,.cat-tab.active{background:var(--dark3);color:var(--cyan);box-shadow:inset 3px 3px 8px var(--nd),inset -3px -3px 8px var(--nl)}
+.cart-close:hover{background:#ff4757}
+.form-group input,.form-group textarea{background:var(--dark2);border:none;box-shadow:inset 3px 3px 8px var(--nd),inset -2px -2px 6px #14253f}
+/* Category slider: image-overlay cards */
+.slider-card{position:relative;border-radius:22px}
+.slider-img{height:250px}
+.slider-body{position:absolute;left:10px;right:10px;bottom:10px;border-radius:14px;background:rgba(5,10,20,.55);backdrop-filter:blur(14px);border:1px solid var(--glass-b)}
+@media(max-width:900px){.bento{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.bento{grid-template-columns:1fr;grid-auto-rows:170px}.b-lg,.b-wide{grid-column:auto;grid-row:auto}}
+
+/* ===== LIGHT MODE ===== */
+[data-theme=light]{--dark:#f3f6fc;--dark2:#e8eef8;--dark3:#ffffff;--white:#0b1426;--white80:rgba(11,20,38,.82);--white40:rgba(11,20,38,.6);--white10:rgba(11,20,38,.06);--white5:rgba(11,20,38,.03);--border:rgba(11,20,38,.1);--glass:rgba(255,255,255,.65);--glass-b:rgba(11,20,38,.1);--nd:#c3cde0;--nl:#ffffff;--cyan:#0a82bd;--blue-light:#2a6fe0;--blue-glow:rgba(26,109,255,.22)}
+[data-theme=light] nav{background:rgba(243,246,252,.85)}
+[data-theme=light] nav.scrolled{background:rgba(243,246,252,.97);box-shadow:0 4px 24px rgba(11,20,38,.1)}
+[data-theme=light] .mobile-menu{background:rgba(243,246,252,.98)}
+[data-theme=light] .modal,[data-theme=light] .cart-drawer{background:rgba(255,255,255,.88)}
+[data-theme=light] .product-card{background:linear-gradient(160deg,#fff,#eef3fb);box-shadow:0 2px 4px rgba(11,20,38,.06),0 14px 30px rgba(11,20,38,.1)}
+[data-theme=light] .product-card.neon{box-shadow:0 0 0 1px rgba(10,130,189,.3),0 0 20px rgba(10,130,189,.15)}
+[data-theme=light] .hero-slide,[data-theme=light] .toast{background:#fff}
+[data-theme=light] .form-group input,[data-theme=light] .form-group textarea{box-shadow:inset 3px 3px 8px var(--nd),inset -2px -2px 6px #fff}
+.hero-slide-info,.slider-body,.bento-info{--white:#fff;--white80:rgba(255,255,255,.85);--white40:rgba(255,255,255,.65);--cyan:#00d4ff;color:#fff}
+.theme-btn{width:40px;height:40px;border-radius:50%;background:var(--dark3);color:var(--cyan);font-size:1rem;box-shadow:4px 4px 9px var(--nd),-3px -3px 8px var(--nl);transition:var(--transition)}
+.theme-btn:hover{transform:rotate(20deg)}
+body,section,footer{transition:background .35s,color .35s}
+/* Social icons */
+.social-link{width:42px;height:42px;font-size:1.05rem}
+.social-link i{color:var(--c,var(--white40));transition:var(--transition)}
+.social-links .social-link:hover{background:var(--c,var(--blue));transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.25)}
+.social-links .social-link:hover i{color:#fff}
+.social-links{flex-wrap:wrap}
+/* Why-us icons */
+.feature-icon{color:#fff;font-size:1.4rem;width:56px;height:56px;box-shadow:0 10px 24px var(--blue-glow);transition:transform .35s}
+.feature-card:hover .feature-icon{transform:rotate(-8deg) scale(1.1)}
+.feature-card:nth-child(4n+2) .feature-icon{background:linear-gradient(135deg,#7c3aed,#3d8bff)}
+.feature-card:nth-child(4n+3) .feature-icon{background:linear-gradient(135deg,#06b6d4,#10b981)}
+.feature-card:nth-child(4n+4) .feature-icon{background:linear-gradient(135deg,#f59e0b,#ef4444)}
+/* Chatbot */
+.chat-fab{position:fixed;right:32px;bottom:92px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;font-size:1.5rem;z-index:1500;box-shadow:0 8px 28px var(--blue-glow);transition:var(--transition);animation:fabPulse 2.5s infinite}
+.chat-fab:hover{transform:scale(1.08)}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 rgba(26,109,255,.5)}70%{box-shadow:0 0 0 18px rgba(26,109,255,0)}100%{box-shadow:0 0 0 0 rgba(26,109,255,0)}}
+.chat-panel{position:fixed;right:32px;bottom:164px;width:380px;max-width:calc(100vw - 20px);height:min(560px,70vh);display:none;flex-direction:column;z-index:1500;border-radius:24px;overflow:hidden;background:color-mix(in srgb,var(--dark2) 90%,transparent);backdrop-filter:blur(22px);border:1px solid var(--glass-b);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.chat-panel.open{display:flex;animation:modalIn .3s ease}
+.chat-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(135deg,var(--blue),#0a9ed6);color:#fff}
+.chat-head small{display:block;font-size:.72rem;opacity:.85}
+.chat-av{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center}
+.chat-x{margin-left:auto;background:transparent;color:#fff;font-size:1.1rem}
+.chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:86%;padding:10px 14px;border-radius:16px;font-size:.86rem;line-height:1.55;animation:fadeUp .3s ease}
+.msg.bot{background:var(--white10);border:1px solid var(--border);border-bottom-left-radius:4px;align-self:flex-start}
+.msg.me{background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.msg a{color:var(--cyan);text-decoration:underline;cursor:pointer}
+.msg ul{padding-left:18px;list-style:disc;margin:4px 0}
+.chat-chips{display:flex;gap:8px;overflow-x:auto;padding:0 14px 10px;scrollbar-width:none}
+.chat-chips button{white-space:nowrap;padding:6px 12px;border-radius:50px;font-size:.75rem;background:var(--white10);border:1px solid var(--border);color:var(--white80);transition:var(--transition)}
+.chat-chips button:hover{background:var(--blue);color:#fff}
+.chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}
+.chat-form input{flex:1;padding:11px 16px;border-radius:50px;border:1px solid var(--border);background:var(--white10);color:var(--white);font-family:var(--font-body);font-size:.88rem}
+.chat-form input:focus{outline:none;border-color:var(--blue)}
+.chat-form button{width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff}
+.typing{opacity:.6;font-style:italic}
+@media(max-width:480px){.chat-fab{right:20px;bottom:80px}.chat-panel{right:10px;bottom:150px}}
+
+/* ===== v4 ===== */
+.theme-switch{position:relative;width:70px;height:36px;padding:3px;border-radius:50px;display:flex;align-items:center;justify-content:space-between;background:var(--dark3);box-shadow:inset 3px 3px 7px var(--nd),inset -3px -3px 7px var(--nl);font-size:.9rem;color:var(--white40)}
+.theme-switch i{width:30px;text-align:center;position:relative;z-index:1;transition:color .3s}
+.theme-switch .knob{position:absolute;top:3px;left:3px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 3px 10px var(--blue-glow);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+[data-theme=light] .theme-switch .knob{transform:translateX(34px)}
+[data-theme=dark] .theme-switch .fa-moon,[data-theme=light] .theme-switch .fa-sun{color:#fff}
+.msg.bot{display:flex;gap:8px}
+.msg-ic{margin-top:3px;color:var(--blue-light)}
+.social-links .social-link{background:var(--c,var(--blue));border:1px solid rgba(255,255,255,.2);box-shadow:0 6px 14px rgba(0,0,0,.25)}
+.social-links .social-link i{color:#fff}
+.social-link svg{width:19px;height:19px;fill:#fff}
+.social-links .social-link:hover{filter:brightness(1.15);transform:translateY(-3px)}
+.email-icon{background:#EA4335}
+.map-wrap{margin-top:60px;border-radius:24px;overflow:hidden;border:1px solid var(--glass-b);background:var(--dark3);box-shadow:0 14px 40px rgba(0,0,0,.25)}
+.map-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 22px;font-family:var(--font-display);font-weight:700}
+.map-head i.fa-location-dot{color:var(--cyan);margin-right:8px}
+.map-wrap iframe{width:100%;height:450px;display:block}
+</style>
 </head>
 <body>
 
@@ -459,6 +580,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
+    <button class="theme-switch" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle light or dark mode"><span class="knob"></span><i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun"></i></button>
     <button class="cart-btn" onclick="toggleCart()">
       <i class="fas fa-shopping-bag"></i> Cart
       <span class="cart-count" id="cartCount">0</span>
@@ -502,7 +624,7 @@
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Happy Clients</div></div>
-      <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Products</div></div>
+      <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Products</div></div>
       <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Rated Service</div></div>
     </div>
   </div>
@@ -513,7 +635,7 @@
 
       <!-- SLIDE 1: Complete Setup -->
       <div class="hero-slide active" data-index="0">
-        <img class="hero-slide-img" src="labor.webp" alt="Complete Workspace Setup"
+        <img class="hero-slide-img" src="complete.png" alt="Complete Workspace Setup"
              onerror="this.style.background='linear-gradient(135deg,#101e35,#0c1524)';this.style.display='flex';this.style.alignItems='center';this.style.justifyContent='center'">
         <div class="hero-slide-info">
           <div>
@@ -526,19 +648,19 @@
 
       <!-- SLIDE 2: Ergonomic Chair -->
       <div class="hero-slide" data-index="1">
-        <img class="hero-slide-img" src="img (2).webp" alt="Ergonomic Chair">
+        <img class="hero-slide-img" src="office (21).webp" alt="Ergonomic Chair">
         <div class="hero-slide-info">
           <div>
             <div class="hero-slide-label">Ergonomic Chairs</div>
             <div class="hero-slide-name">FlexBack Mesh Chair</div>
           </div>
-          <div class="hero-slide-price">₵1,199</div>
+          <div class="hero-slide-price">₵1,699</div>
         </div>
       </div>
 
       <!-- SLIDE 3: NVIDIA Gaming PC -->
       <div class="hero-slide" data-index="2">
-        <img class="hero-slide-img" src="pex1.jpg" alt="NVIDIA Gaming PC">
+        <img class="hero-slide-img" src="product (8).jpeg" alt="NVIDIA Gaming PC">
         <div class="hero-slide-info">
           <div>
             <div class="hero-slide-label">NVIDIA Gaming CPUs</div>
@@ -561,7 +683,7 @@
       </div>
 
       <div class="hero-slide" data-index="4">
-        <img class="hero-slide-img" src="tb.webp" alt="Executive L-Shaped Desk">
+        <img class="hero-slide-img" src="product (22).jpeg" alt="Executive L-Shaped Desk">
         <div class="hero-slide-info">
           <div>
             <div class="hero-slide-label">Office Tables</div>
@@ -585,6 +707,18 @@
 
 </section>
 
+<section id="collections">
+  <div class="section-header reveal"><div class="section-tag"><i class="fas fa-layer-group"></i> Collections</div><h2 class="section-title">Explore Our <span>Collections</span></h2><p class="section-sub">Tap a collection to browse every product in it</p></div>
+  <div class="bento">
+  <div class="bento-card b-lg" onclick="filterProducts('Ergonomic Chairs',true)"><img src="product (23).jpeg" alt="Ergonomic Chairs" onerror="this.style.display='none'"><div class="bento-info"><h3>Ergonomic Chairs</h3><span data-count="Ergonomic Chairs"></span></div></div>
+  <div class="bento-card b-wide neon" onclick="filterProducts('NVIDIA Gaming CPUs',true)"><img src="product (8).jpeg" alt="NVIDIA Gaming CPUs" onerror="this.style.display='none'"><div class="bento-info"><h3>NVIDIA Gaming PCs</h3><span data-count="NVIDIA Gaming CPUs"></span></div></div>
+  <div class="bento-card " onclick="filterProducts('Electric Desks',true)"><img src="tb.webp" alt="Electric Desks" onerror="this.style.display='none'"><div class="bento-info"><h3>Electric Desks</h3><span data-count="Electric Desks"></span></div></div>
+  <div class="bento-card " onclick="filterProducts('Office Tables',true)"><img src="lshape.jpg" alt="Office Tables" onerror="this.style.display='none'"><div class="bento-info"><h3>Office Tables</h3><span data-count="Office Tables"></span></div></div>
+  <div class="bento-card b-wide" onclick="filterProducts('Accessories',true)"><img src="keymou.jpg" alt="Accessories" onerror="this.style.display='none'"><div class="bento-info"><h3>Accessories</h3><span data-count="Accessories"></span></div></div>
+  <div class="bento-card stat b-wide"><div class="bento-info" style="text-align:center"><h3 style="font-size:2.6rem">60+</h3><span style="color:#fff">Premium products · Retail &amp; wholesale</span></div></div>
+  </div>
+</section>
+
 <!-- FEATURED PRODUCTS -->
 <section id="products">
   <div class="section-header reveal">
@@ -592,7 +726,9 @@
     <h2 class="section-title">Our Premium <span>Products</span></h2>
     <p class="section-sub">Handpicked products built for performance, comfort, and style</p>
   </div>
+  <div class="categories-nav" id="prodTabs" style="justify-content:center"></div>
   <div class="products-grid" id="productsGrid"></div>
+  <div style="text-align:center;margin-top:40px"><button class="btn-primary" id="loadMore" onclick="loadMore()" style="display:none">Load more products</button></div>
 </section>
 
 <!-- CATEGORIES SLIDER -->
@@ -621,24 +757,44 @@
   </div>
   <div class="features-grid">
     <div class="feature-card reveal">
-      <div class="feature-icon"><i class="fas fa-award"></i></div>
+      <div class="feature-icon"><i class="fa-solid fa-circle-check"></i></div>
       <div class="feature-title">Premium Quality</div>
       <div class="feature-desc">Every product is sourced from top manufacturers and rigorously quality-checked before reaching you.</div>
     </div>
     <div class="feature-card reveal">
-      <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+      <div class="feature-icon"><i class="fa-solid fa-van-shuttle"></i></div>
       <div class="feature-title">Fast Delivery</div>
       <div class="feature-desc">Swift and reliable delivery across Ghana. Wholesale and bulk orders welcome.</div>
     </div>
     <div class="feature-card reveal">
-      <div class="feature-icon"><i class="fas fa-headset"></i></div>
+      <div class="feature-icon"><i class="fa-solid fa-circle-check"></i></div>
       <div class="feature-title">Expert Support</div>
       <div class="feature-desc">Our team is available via WhatsApp to guide you to the perfect workspace solution.</div>
     </div>
     <div class="feature-card reveal">
-      <div class="feature-icon"><i class="fas fa-tags"></i></div>
+      <div class="feature-icon"><i class="fa-solid fa-circle-check"></i></div>
       <div class="feature-title">Best Prices</div>
       <div class="feature-desc">Competitive retail and wholesale pricing with flexible payment options for businesses.</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+      <div class="feature-title">Custom PC Builds</div>
+      <div class="feature-desc">Tell us your budget and use case — we spec, source and assemble the perfect PC for you.</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
+      <div class="feature-title">Global Sourcing</div>
+      <div class="feature-desc">Hard-to-find GPUs, CPUs and boards sourced from overseas suppliers when local stock runs out.</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="feature-title">Warranty Support</div>
+      <div class="feature-desc">Genuine components with warranty backing and help if anything goes wrong.</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i class="fa-solid fa-wallet"></i></div>
+      <div class="feature-title">Flexible Payments</div>
+      <div class="feature-desc">Mobile Money, bank transfer and other options — just ask us on WhatsApp.</div>
     </div>
   </div>
 </section>
@@ -659,16 +815,17 @@
         <div class="contact-item-text"><div class="contact-item-label">WhatsApp</div><div>+233 593 216 121</div></div>
       </div>
       <div class="contact-item">
-        <div class="contact-item-icon email-icon"><i class="fas fa-envelope" style="color:white"></i></div>
+        <div class="contact-item-icon email-icon"><svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#fff;"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></div>
         <div class="contact-item-text"><div class="contact-item-label">Email</div><div>gabrielijero2@gmail.com</div></div>
       </div>
       <div class="contact-item">
         <div class="contact-item-icon" style="background:var(--dark3);border:1px solid var(--border)"><i class="fas fa-location-dot" style="color:var(--cyan)"></i></div>
-        <div class="contact-item-text"><div class="contact-item-label">Location</div><div>Ghana</div></div>
+        <div class="contact-item-text"><div class="contact-item-label">Location</div><div>Community 22 Annex, Ghana</div></div>
       </div>
       <a href="https://wa.me/233593216121?text=Hello%20IJERO%20ENTERPRISE%2C%20I%20would%20like%20to%20inquire%20about%20your%20products." target="_blank" class="whatsapp-btn">
         <i class="fab fa-whatsapp" style="font-size:1.3rem"></i> Chat on WhatsApp
       </a>
+      <div style="margin-top:28px"><div class="contact-item-label" style="margin-bottom:10px">Follow us</div><div class="social-links" id="contactSocials" style="margin-top:0"></div></div>
     </div>
     <div class="contact-form">
       <h3>Send Us a Message</h3>
@@ -684,10 +841,9 @@
       </form>
     </div>
   </div>
-  <div class="map-placeholder reveal">
-    <i class="fas fa-map-location-dot"></i>
-    <p style="font-weight:600">Our Location — Ghana</p>
-    <p style="font-size:0.85rem">Visit us or reach out via WhatsApp / Email</p>
+  <div class="map-wrap reveal">
+    <div class="map-head"><span><i class="fa-solid fa-location-dot"></i> Find Us — Community 22 Annex, Ghana</span><a href="https://www.google.com/maps/search/?api=1&query=Community+22+Annex" target="_blank" rel="noopener" class="btn-primary" style="padding:8px 18px;font-size:.85rem"><i class="fa-solid fa-diamond-turn-right" style="margin-right:6px"></i>Get Directions</a></div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31759.889792791317!2d-0.06423981519235705!3d5.71512113306635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf8185cb662d9f%3A0xe4c6ec6af9940aca!2sCommunity%2022%20Annex!5e0!3m2!1sen!2sgh!4v1793442881587!5m2!1sen!2sgh" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Our location on Google Maps"></iframe>
   </div>
 </section>
 
@@ -700,13 +856,7 @@
         <div class="nav-logo-text">IJERO <span>ENTERPRISE</span></div>
       </div>
       <p class="footer-desc">Ghana's trusted supplier of premium ergonomic office furniture, gaming setups, and computer accessories. Empowering workspaces since day one.</p>
-      <div class="social-links">
-        <a href="https://wa.me/233593216121" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-        <a href="mailto:gabrielijero2@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-      </div>
+      <div class="social-links" id="footerSocials"></div>
     </div>
     <div class="footer-col">
       <h4>Quick Links</h4>
@@ -728,8 +878,8 @@
       <h4>Contact</h4>
       <ul>
         <li><a href="https://wa.me/233593216121" target="_blank"><i class="fab fa-whatsapp" style="color:#25d366;margin-right:6px"></i>+233 593 216 121</a></li>
-        <li><a href="mailto:gabrielijero2@gmail.com"><i class="fas fa-envelope" style="color:var(--blue);margin-right:6px"></i>gabrielijero2@gmail.com</a></li>
-        <li><a href="#"><i class="fas fa-location-dot" style="color:var(--cyan);margin-right:6px"></i>Ghana</a></li>
+        <li><a href="mailto:gabrielijero2@gmail.com"><svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:#EA4335;margin-right:6px;vertical-align:-2px"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>gabrielijero2@gmail.com</a></li>
+        <li><a href="#"><i class="fas fa-location-dot" style="color:var(--cyan);margin-right:6px"></i>Community 22 Annex, Ghana</a></li>
       </ul>
     </div>
   </div>
@@ -822,7 +972,7 @@ const products = [
     name: "ErgoElite Pro Chair",
     cat: "Ergonomic Chairs",
     badge: "Bestseller",
-    image: "img (1).webp",
+    image: "product (10).jpeg",
     fallback: "🪑",
     price: 999,
     desc: "Premium ergonomic chair with lumbar support, adjustable armrests, and breathable mesh back for all-day comfort.",
@@ -842,7 +992,7 @@ const products = [
     name: "NVIDIA RTX 4090 Gaming PC",
     cat: "NVIDIA Gaming CPUs",
     badge: "Hot",
-    image: "pex1.jpg",
+    image: "product (1).jpeg",
     fallback: "🖥️",
     price: 18999,
     desc: "Ultimate gaming powerhouse with NVIDIA GeForce RTX 4090, Intel Core i9, 64GB RAM, and 2TB SSD.",
@@ -862,13 +1012,13 @@ const products = [
     name: "SmartRise Electric Desk",
     cat: "Electric Desks",
     badge: "New",
-    image: "tb.webp",
+    image: "product (22).jpeg",
     fallback: "⚡",
     price: 2699,
     desc: "Motorized height-adjustable standing desk with memory presets, cable management, and premium tabletop.",
     fullDesc: "Transform your workspace with the SmartRise Electric Desk. With dual-motor precision, 4 programmable height presets, and an anti-collision safety sensor, you can switch between sitting and standing in seconds.",
     specs: [
-      { key: "Height Range", val: "70–120 cm" },
+      { key: "Height Range", val: "60–140 cm" },
       { key: "Motor",        val: "Dual Motor" },
       { key: "Max Load",     val: "100 kg" },
       { key: "Presets",      val: "4 Memory Positions" },
@@ -888,7 +1038,7 @@ const products = [
     desc: "Spacious L-shaped executive office desk with cable management, hutch storage, and modern walnut finish.",
     fullDesc: "The Executive L-Shaped Desk delivers serious workspace real estate. Built from high-quality MDF with a premium walnut veneer finish, it features integrated cable management, a storage hutch, and ample space for dual-monitor setups.",
     specs: [
-      { key: "Dimensions", val: "160 × 120 × 70 cm" },
+      { key: "Dimensions", val: "160 × 140 × 70 cm" },
       { key: "Material",   val: "MDF + Carbon Fibre" },
       { key: "Storage",    val: "Electric motor adjustable" },
       { key: "Cable Mgmt", val: "Integrated" },
@@ -904,7 +1054,7 @@ const products = [
     badge: "Deal",
     image: "keymou.jpg",
     fallback: "🖱️",
-    price: 299,
+    price: 499,
     desc: "Complete gaming kit: mechanical keyboard, RGB gaming mouse.",
     fullDesc: "Level up your setup with the Pro Gaming Bundle. Includes a tactile mechanical keyboard with RGB lighting, a 16000 DPI gaming mouse, a 900×400mm extended mousepad, and a 7.1 surround sound USB headset.",
     specs: [
@@ -942,7 +1092,7 @@ const products = [
     badge: "",
     image: "cu.jpg",
     fallback: "🖥️",
-    price: 9499,
+    price: 7499,
     desc: "34-inch curved ultrawide IPS monitor with 144Hz refresh, QHD resolution, and FreeSync Premium.",
     fullDesc: "Immerse yourself in the UltraWide 34\" curved monitor. With 3440×1440 QHD resolution, 144Hz refresh rate, 1ms response time, and AMD FreeSync Premium, it's built for gaming and professional work alike.",
     specs: [
@@ -972,7 +1122,60 @@ const products = [
       { key: "Storage", val: "1TB NVMe SSD" },
       { key: "Cooling", val: "Tower Air Cooler" }
     ]
-  }
+  },
+  /* ── MORE PRODUCTS ── */
+  {"id": 9, "name": "ErgoElite Pro Max", "cat": "Ergonomic Chairs", "badge": "New", "image": "product (24).jpeg", "fallback": "🪑", "price": 1599, "desc": "Flagship mesh chair with adjustable headrest, 4D armrests and synchro tilt.", "fullDesc": "ErgoElite Pro Max — Flagship mesh chair with adjustable headrest, 4D armrests and synchro tilt. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Headrest", "val": "Adjustable"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 10, "name": "ErgoElite Lite", "cat": "Ergonomic Chairs", "badge": "", "image": "product (21).jpeg", "fallback": "🪑", "price": 949, "desc": "Entry-level ergonomic chair with lumbar support and breathable mesh.", "fullDesc": "ErgoElite Lite — Entry-level ergonomic chair with lumbar support and breathable mesh. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Max Load", "val": "120 kg"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 11, "name": "FlexBack Mesh Pro", "cat": "Ergonomic Chairs", "badge": "Hot", "image": "er.webp", "fallback": "🪑", "price": 1399, "desc": "Upgraded FlexBack with 3D armrests, deep recline and soft-touch mesh.", "fullDesc": "FlexBack Mesh Pro — Upgraded FlexBack with 3D armrests, deep recline and soft-touch mesh. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Recline", "val": "Up to 135°"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 12, "name": "FlexBack Mesh Compact", "cat": "Ergonomic Chairs", "badge": "", "image": "er.webp", "fallback": "🪑", "price": 1099, "desc": "Space-saving mesh chair for small offices and study rooms.", "fullDesc": "FlexBack Mesh Compact — Space-saving mesh chair for small offices and study rooms. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Seat Height", "val": "42–50 cm"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 13, "name": "Executive Leather Boss Chair", "cat": "Ergonomic Chairs", "badge": "Popular", "image": "office (10).webp", "fallback": "🪑", "price": 1899, "desc": "High-back PU leather executive chair with padded armrests and chrome base.", "fullDesc": "Executive Leather Boss Chair — High-back PU leather executive chair with padded armrests and chrome base. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Material", "val": "PU Leather"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 14, "name": "Gaming Racer Chair", "cat": "Ergonomic Chairs", "badge": "Hot", "image": "office (12).webp", "fallback": "🪑", "price": 1499, "desc": "Bucket-seat racing chair with lumbar and neck pillows and 4D armrests.", "fullDesc": "Gaming Racer Chair — Bucket-seat racing chair with lumbar and neck pillows and 4D armrests. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Recline", "val": "Up to 180°"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 15, "name": "Visitor Mesh Chair", "cat": "Ergonomic Chairs", "badge": "Deal", "image": "office (14).webp", "fallback": "🪑", "price": 399, "desc": "Guest chair with mesh back and a sturdy steel frame.", "fullDesc": "Visitor Mesh Chair — Guest chair with mesh back and a sturdy steel frame. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Max Load", "val": "110 kg"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 16, "name": "Mid-Back Task Chair", "cat": "Ergonomic Chairs", "badge": "", "image": "office (22).webp", "fallback": "🪑", "price": 599, "desc": "Everyday task chair with gas-lift height control and smooth casters.", "fullDesc": "Mid-Back Task Chair — Everyday task chair with gas-lift height control and smooth casters. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Base", "val": "Nylon 5-Star"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 17, "name": "Ergo Kneeling Chair", "cat": "Ergonomic Chairs", "badge": "New", "image": "office (17).webp", "fallback": "🪑", "price": 649, "desc": "Posture-friendly kneeling chair that keeps your spine aligned.", "fullDesc": "Ergo Kneeling Chair — Posture-friendly kneeling chair that keeps your spine aligned. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Frame", "val": "Solid Wood"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 18, "name": "Big & Tall Heavy-Duty Chair", "cat": "Ergonomic Chairs", "badge": "", "image": "office (11).webp", "fallback": "🪑", "price": 1599, "desc": "Reinforced wide-seat chair built for long hours and heavier loads.", "fullDesc": "Big & Tall Heavy-Duty Chair — Reinforced wide-seat chair built for long hours and heavier loads. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Max Load", "val": "200 kg"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 19, "name": "Compact L-Shaped Desk", "cat": "Office Tables", "badge": "", "image": "office (6).webp", "fallback": "🗄️", "price": 2899, "desc": "Space-smart L-shaped desk with cable management for small offices.", "fullDesc": "Compact L-Shaped Desk — Space-smart L-shaped desk with cable management for small offices. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Dimensions", "val": "140 × 100 × 74 cm"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 20, "name": "Executive Boss Desk", "cat": "Office Tables", "badge": "Popular", "image": "office (8).webp", "fallback": "🗄️", "price": 5299, "desc": "Statement executive desk with side return, drawers and veneer finish.", "fullDesc": "Executive Boss Desk — Statement executive desk with side return, drawers and veneer finish. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Dimensions", "val": "200 × 90 × 76 cm"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 21, "name": "Home Office Desk 120cm", "cat": "Office Tables", "badge": "New", "image": "desk (4).jpg", "fallback": "🗄️", "price": 1199, "desc": "Clean, sturdy desk for laptops and dual-screen home setups.", "fullDesc": "Home Office Desk 120cm — Clean, sturdy desk for laptops and dual-screen home setups. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Dimensions", "val": "120 × 60 × 74 cm"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 22, "name": "Computer Workstation Table", "cat": "Office Tables", "badge": "Deal", "image": "desk (5).jpg", "fallback": "🗄️", "price": 1899, "desc": "Practical workstation table with keyboard tray and CPU shelf.", "fullDesc": "Computer Workstation Table — Practical workstation table with keyboard tray and CPU shelf. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Dimensions", "val": "100 × 55 × 75 cm"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 23, "name": "Conference Table 8-Seater", "cat": "Office Tables", "badge": "", "image": "desk (2).jpg", "fallback": "🗄️", "price": 6499, "desc": "Boardroom table with cable ports for meetings and presentations.", "fullDesc": "Conference Table 8-Seater — Boardroom table with cable ports for meetings and presentations. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Seats", "val": "8 People"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 24, "name": "Reception Counter Desk", "cat": "Office Tables", "badge": "", "image": "desksss.webp", "fallback": "🗄️", "price": 4599, "desc": "Professional front-desk counter with raised transaction ledge.", "fullDesc": "Reception Counter Desk — Professional front-desk counter with raised transaction ledge. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Dimensions", "val": "180 × 70 × 105 cm"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 25, "name": "Manager Desk with Drawers", "cat": "Office Tables", "badge": "", "image": "desk (5).jpg", "fallback": "🗄️", "price": 2399, "desc": "Manager desk with lockable drawers and a mobile pedestal.", "fullDesc": "Manager Desk with Drawers — Manager desk with lockable drawers and a mobile pedestal. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Storage", "val": "3 Drawers"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 26, "name": "Minimalist Writing Desk", "cat": "Office Tables", "badge": "", "image": "office (7).webp", "fallback": "🗄️", "price": 749, "desc": "Slim writing desk with steel legs for study and light work.", "fullDesc": "Minimalist Writing Desk — Slim writing desk with steel legs for study and light work. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Material", "val": "MDF + Steel Legs"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 27, "name": "Corner Workstation Desk", "cat": "Office Tables", "badge": "New", "image": "lshape.jpg", "fallback": "🗄️", "price": 1999, "desc": "Wraparound corner desk with generous room for multi-monitor setups.", "fullDesc": "Corner Workstation Desk — Wraparound corner desk with generous room for multi-monitor setups. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Dimensions", "val": "150 × 150 × 74 cm"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 28, "name": "Glass Top Executive Table", "cat": "Office Tables", "badge": "Hot", "image": "desks (1).jpg", "fallback": "🗄️", "price": 3299, "desc": "Modern executive table with tempered glass top and metal frame.", "fullDesc": "Glass Top Executive Table — Modern executive table with tempered glass top and metal frame. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Top", "val": "Tempered Glass"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 29, "name": "Training Room Table", "cat": "Office Tables", "badge": "", "image": "tb.webp", "fallback": "🗄️", "price": 1799, "desc": "Foldable, castor-mounted training table for flexible rooms.", "fullDesc": "Training Room Table — Foldable, castor-mounted training table for flexible rooms. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Seats", "val": "4 People"}, {"key": "Warranty", "val": "12 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 30, "name": "SmartRise Pro Dual-Monitor", "cat": "Electric Desks", "badge": "New", "image": "tb.webp", "fallback": "⚡", "price": 3199, "desc": "Dual-motor standing desk with wide top built for two monitors.", "fullDesc": "SmartRise Pro Dual-Monitor — Dual-motor standing desk with wide top built for two monitors. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Tabletop", "val": "160 × 75 cm"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 31, "name": "SmartRise Compact 120cm", "cat": "Electric Desks", "badge": "", "image": "tb.webp", "fallback": "⚡", "price": 1999, "desc": "Compact motorized desk for apartments and small home offices.", "fullDesc": "SmartRise Compact 120cm — Compact motorized desk for apartments and small home offices. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Tabletop", "val": "120 × 60 cm"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 32, "name": "SmartRise Executive", "cat": "Electric Desks", "badge": "Bestseller", "image": "desk (3).jpg", "fallback": "⚡", "price": 4399, "desc": "Premium electric desk with 4 memory presets and anti-collision sensor.", "fullDesc": "SmartRise Executive — Premium electric desk with 4 memory presets and anti-collision sensor. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Presets", "val": "4 Memory Positions"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 33, "name": "Electric L-Shaped Standing Desk", "cat": "Electric Desks", "badge": "Hot", "image": "office (2).webp", "fallback": "⚡", "price": 4999, "desc": "L-shaped sit-stand desk with dual motors and extra surface area.", "fullDesc": "Electric L-Shaped Standing Desk — L-shaped sit-stand desk with dual motors and extra surface area. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Motor", "val": "Dual Motor"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 34, "name": "Bamboo Top Electric Desk", "cat": "Electric Desks", "badge": "", "image": "bamboo.webp", "fallback": "⚡", "price": 3599, "desc": "Eco-friendly bamboo tabletop on a whisper-quiet electric frame.", "fullDesc": "Bamboo Top Electric Desk — Eco-friendly bamboo tabletop on a whisper-quiet electric frame. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Top", "val": "Natural Bamboo"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 35, "name": "Gaming Electric Desk RGB", "cat": "Electric Desks", "badge": "Hot", "image": "rgb.webp", "fallback": "⚡", "price": 3799, "desc": "Height-adjustable gaming desk with RGB edge lighting and cup holder.", "fullDesc": "Gaming Electric Desk RGB — Height-adjustable gaming desk with RGB edge lighting and cup holder. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Lighting", "val": "RGB LED"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 36, "name": "Single-Motor Standing Desk", "cat": "Electric Desks", "badge": "Deal", "image": "tb.webp", "fallback": "⚡", "price": 1599, "desc": "Affordable sit-stand desk with smooth single-motor lift.", "fullDesc": "Single-Motor Standing Desk — Affordable sit-stand desk with smooth single-motor lift. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Motor", "val": "Single Motor"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 37, "name": "Electric Desk Frame Only", "cat": "Electric Desks", "badge": "", "image": "frame.webp", "fallback": "⚡", "price": 1199, "desc": "Dual-motor height-adjustable frame — bring your own tabletop.", "fullDesc": "Electric Desk Frame Only — Dual-motor height-adjustable frame — bring your own tabletop. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Max Load", "val": "100 kg"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 38, "name": "Kids Adjustable Study Desk", "cat": "Electric Desks", "badge": "New", "image": "kids.jpg", "fallback": "⚡", "price": 1399, "desc": "Grows with your child: adjustable height and tilt-up surface.", "fullDesc": "Kids Adjustable Study Desk — Grows with your child: adjustable height and tilt-up surface. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Height Range", "val": "55–90 cm"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 39, "name": "Memory Keypad Electric Desk", "cat": "Electric Desks", "badge": "", "image": "keypad.webp", "fallback": "⚡", "price": 2999, "desc": "Electric desk with digital keypad and USB charging port.", "fullDesc": "Memory Keypad Electric Desk — Electric desk with digital keypad and USB charging port. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Display", "val": "Digital Keypad"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 40, "name": "Walnut Electric Desk 160cm", "cat": "Electric Desks", "badge": "Popular", "image": "walnut.webp", "fallback": "⚡", "price": 2899, "desc": "Walnut-finish sit-stand desk with integrated cable tray.", "fullDesc": "Walnut Electric Desk 160cm — Walnut-finish sit-stand desk with integrated cable tray. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Tabletop", "val": "160 × 70 cm"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 41, "name": "RTX 4080 Super Gaming PC", "cat": "NVIDIA Gaming CPUs", "badge": "Hot", "image": "product (4).jpeg", "fallback": "🖥️", "price": 14499, "desc": "High-refresh 4K-ready rig with Core i9, 32GB DDR5 and 2TB NVMe.", "fullDesc": "RTX 4080 Super Gaming PC — High-refresh 4K-ready rig with Core i9, 32GB DDR5 and 2TB NVMe. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "GPU", "val": "NVIDIA RTX 4080 Super 16GB"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 42, "name": "RTX 4070 Ti Creator PC", "cat": "NVIDIA Gaming CPUs", "badge": "", "image": "product (5).jpeg", "fallback": "🖥️", "price": 17999, "desc": "Built for editing, 3D and streaming with 64GB RAM and fast storage.", "fullDesc": "RTX 4070 Ti Creator PC — Built for editing, 3D and streaming with 64GB RAM and fast storage. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "GPU", "val": "NVIDIA RTX 4070 Ti 12GB"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 43, "name": "RTX 4060 Ti Starter PC", "cat": "NVIDIA Gaming CPUs", "badge": "Deal", "image": "product (6).jpeg", "fallback": "🖥️", "price": 11999, "desc": "Great 1080p/1440p gaming value with Core i5 and 16GB DDR5.", "fullDesc": "RTX 4060 Ti Starter PC — Great 1080p/1440p gaming value with Core i5 and 16GB DDR5. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "GPU", "val": "NVIDIA RTX 4060 Ti 8GB"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 44, "name": "RTX 4060 Budget PC", "cat": "NVIDIA Gaming CPUs", "badge": "", "image": "product (7).jpeg", "fallback": "🖥️", "price": 9499, "desc": "Smooth 1080p gaming without breaking the bank.", "fullDesc": "RTX 4060 Budget PC — Smooth 1080p gaming without breaking the bank. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "GPU", "val": "NVIDIA RTX 4060 8GB"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 45, "name": "RTX 4090 White Edition", "cat": "NVIDIA Gaming CPUs", "badge": "New", "image": "product (8).jpeg", "fallback": "🖥️", "price": 19999, "desc": "All-white showcase build with RTX 4090, i9 and tempered glass.", "fullDesc": "RTX 4090 White Edition — All-white showcase build with RTX 4090, i9 and tempered glass. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "GPU", "val": "NVIDIA RTX 4090 24GB"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 46, "name": "RTX 4080 Streamer PC", "cat": "NVIDIA Gaming CPUs", "badge": "", "image": "product (9).jpeg", "fallback": "🖥️", "price": 15499, "desc": "Stream and game at once with Core i7, 32GB RAM and capture-ready I/O.", "fullDesc": "RTX 4080 Streamer PC — Stream and game at once with Core i7, 32GB RAM and capture-ready I/O. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "GPU", "val": "NVIDIA RTX 4080 16GB"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 47, "name": "RTX 4070 Super Esports PC", "cat": "NVIDIA Gaming CPUs", "badge": "Popular", "image": "product (12).jpeg", "fallback": "🖥️", "price": 15999, "desc": "Tuned for high-FPS competitive play on 1440p 165Hz screens.", "fullDesc": "RTX 4070 Super Esports PC — Tuned for high-FPS competitive play on 1440p 165Hz screens. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "GPU", "val": "NVIDIA RTX 4070 Super 12GB"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 48, "name": "Mini-ITX RTX 4070 Compact PC", "cat": "NVIDIA Gaming CPUs", "badge": "", "image": "product (13).jpeg", "fallback": "🖥️", "price": 16999, "desc": "Small-form-factor powerhouse for desks with limited space.", "fullDesc": "Mini-ITX RTX 4070 Compact PC — Small-form-factor powerhouse for desks with limited space. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "GPU", "val": "NVIDIA RTX 4070 12GB"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 49, "name": "RTX 3060 Entry Gaming PC", "cat": "NVIDIA Gaming CPUs", "badge": "Deal", "image": "product (14).jpeg", "fallback": "🖥️", "price": 7499, "desc": "Entry-level gaming and everyday productivity PC.", "fullDesc": "RTX 3060 Entry Gaming PC — Entry-level gaming and everyday productivity PC. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "GPU", "val": "NVIDIA RTX 3060 12GB"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 50, "name": "RTX 4090 Workstation Pro", "cat": "NVIDIA Gaming CPUs", "badge": "", "image": "product (15).jpeg", "fallback": "🖥️", "price": 21999, "desc": "Maximum-performance workstation for AI, rendering and 4K gaming.", "fullDesc": "RTX 4090 Workstation Pro — Maximum-performance workstation for AI, rendering and 4K gaming. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "GPU", "val": "NVIDIA RTX 4090 24GB"}, {"key": "Warranty", "val": "24 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 51, "name": "RGB Mechanical Keyboard", "cat": "Accessories", "badge": "Hot", "image": "keymou.jpg", "fallback": "🖱️", "price": 349, "desc": "Tactile hot-swappable mechanical keyboard with per-key RGB.", "fullDesc": "RGB Mechanical Keyboard — Tactile hot-swappable mechanical keyboard with per-key RGB. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Switches", "val": "Hot-Swappable"}, {"key": "Warranty", "val": "6 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 52, "name": "Wireless Gaming Mouse", "cat": "Accessories", "badge": "", "image": "wireless.jpg", "fallback": "🖱️", "price": 249, "desc": "Lightweight low-latency wireless mouse with long battery life.", "fullDesc": "Wireless Gaming Mouse — Lightweight low-latency wireless mouse with long battery life. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "DPI", "val": "Up to 16000"}, {"key": "Warranty", "val": "6 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 53, "name": "XL Desk Mat 900×400", "cat": "Accessories", "badge": "Deal", "image": "mat.webp", "fallback": "🖱️", "price": 99, "desc": "Extended anti-slip desk mat with stitched edges.", "fullDesc": "XL Desk Mat 900×400 — Extended anti-slip desk mat with stitched edges. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Size", "val": "900 × 400 mm"}, {"key": "Warranty", "val": "6 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 54, "name": "27\" 165Hz Gaming Monitor", "cat": "Accessories", "badge": "Hot", "image": "cu.jpg", "fallback": "🖱️", "price": 4299, "desc": "QHD IPS gaming monitor with 165Hz refresh and 1ms response.", "fullDesc": "27\" 165Hz Gaming Monitor — QHD IPS gaming monitor with 165Hz refresh and 1ms response. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Resolution", "val": "2560 × 1440"}, {"key": "Warranty", "val": "6 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 55, "name": "Dual Monitor Arm", "cat": "Accessories", "badge": "", "image": "arm.webp", "fallback": "🖱️", "price": 329, "desc": "Gas-spring dual arm with full tilt, swivel and cable routing.", "fullDesc": "Dual Monitor Arm — Gas-spring dual arm with full tilt, swivel and cable routing. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Supports", "val": "Up to 27\" each"}, {"key": "Warranty", "val": "6 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 56, "name": "7.1 Surround Gaming Headset", "cat": "Accessories", "badge": "", "image": "headset.webp", "fallback": "🖱️", "price": 399, "desc": "Immersive 7.1 headset with noise-cancelling microphone.", "fullDesc": "7.1 Surround Gaming Headset — Immersive 7.1 headset with noise-cancelling microphone. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Connectivity", "val": "USB"}, {"key": "Warranty", "val": "6 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 57, "name": "1080p Streaming Webcam", "cat": "Accessories", "badge": "New", "image": "webcam.jpg", "fallback": "🖱️", "price": 279, "desc": "Full-HD webcam with autofocus and built-in dual mics.", "fullDesc": "1080p Streaming Webcam — Full-HD webcam with autofocus and built-in dual mics. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Resolution", "val": "1080p 30fps"}, {"key": "Warranty", "val": "6 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 58, "name": "Aluminium Laptop Stand", "cat": "Accessories", "badge": "", "image": "lap.webp", "fallback": "🖱️", "price": 189, "desc": "Foldable ergonomic laptop stand with ventilated design.", "fullDesc": "Aluminium Laptop Stand — Foldable ergonomic laptop stand with ventilated design. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Material", "val": "Aluminium Alloy"}, {"key": "Warranty", "val": "6 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 59, "name": "USB-C Docking Hub 9-in-1", "cat": "Accessories", "badge": "New", "image": "usbc.webp", "fallback": "🖱️", "price": 459, "desc": "HDMI, USB 3.0, SD card and PD charging in a single hub.", "fullDesc": "USB-C Docking Hub 9-in-1 — HDMI, USB 3.0, SD card and PD charging in a single hub. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Ports", "val": "9-in-1"}, {"key": "Warranty", "val": "6 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]},
+  {"id": 60, "name": "Cable Management Kit", "cat": "Accessories", "badge": "Deal", "image": "cabkit.jpg", "fallback": "🖱️", "price": 79, "desc": "Clips, sleeves and trays for a clean, tidy desk.", "fullDesc": "Cable Management Kit — Clips, sleeves and trays for a clean, tidy desk. Quality-checked by IJERO ENTERPRISE and available for retail and wholesale with delivery across Ghana.", "specs": [{"key": "Pieces", "val": "40+"}, {"key": "Warranty", "val": "6 months"}, {"key": "Delivery", "val": "Nationwide, Ghana"}]}
 
   /* ── TO ADD A NEW PRODUCT ──────────────────────────────────
   ,{
@@ -1323,6 +1526,130 @@ document.addEventListener('keydown', e => {
     document.getElementById('cartDrawer').classList.remove('open');
   }
 });
+</script>
+<script>
+var prodCat='All',prodLimit=12;
+function renderProducts(){
+  var list=products.filter(function(p){return prodCat==='All'||p.cat===prodCat});
+  document.getElementById('productsGrid').innerHTML=list.slice(0,prodLimit).map(function(p){return `
+    <div class="product-card reveal visible${p.cat==='NVIDIA Gaming CPUs'?' neon':''}">
+      <div class="product-img-wrap" onclick="openModal(${p.id})">
+        ${p.badge?`<span class="product-badge">${p.badge}</span>`:''}
+        ${productImgHTML(p,'product-img')}
+      </div>
+      <div class="product-body">
+        <div class="product-cat">${p.cat}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">₵${p.price.toLocaleString()}</div>
+          <div class="product-actions">
+            <button class="btn-view" onclick="openModal(${p.id})"><i class="fas fa-eye"></i> View</button>
+            <button class="btn-cart" id="cartBtn${p.id}" onclick="addToCart(${p.id})"><i class="fas fa-plus"></i> Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>`}).join('');
+  document.getElementById('loadMore').style.display=list.length>prodLimit?'inline-block':'none';
+  document.querySelectorAll('.product-card').forEach(function(c){
+    c.onmousemove=function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateY('+x*10+'deg) rotateX('+(-y*10)+'deg) translateY(-6px)'};
+    c.onmouseleave=function(){c.style.transform=''};
+  });
+}
+function renderProdTabs(){document.getElementById('prodTabs').innerHTML=['All'].concat(CATEGORIES).map(function(c){return `<button class="cat-tab ${c===prodCat?'active':''}" onclick="filterProducts('${c}')">${c}</button>`}).join('')}
+function filterProducts(c,scroll){prodCat=c;prodLimit=12;renderProdTabs();renderProducts();if(scroll)document.getElementById('products').scrollIntoView({behavior:'smooth'})}
+function loadMore(){prodLimit+=12;renderProducts()}
+document.querySelectorAll('[data-count]').forEach(function(e){e.textContent=products.filter(function(p){return p.cat===e.dataset.count}).length+' products'});
+renderProdTabs();renderProducts();
+</script>
+<!-- CHATBOT -->
+<button class="chat-fab" id="chatFab" onclick="toggleChat()" aria-label="Chat with us"><i class="fa-solid fa-robot"></i></button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head"><div class="chat-av"><i class="fa-solid fa-robot"></i></div><div><b>IJERO Assistant</b><small>Store info &amp; PC building help</small></div><button class="chat-x" onclick="toggleChat()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div class="chat-chips" id="chatChips"></div>
+  <form class="chat-form" onsubmit="chatSend(event)"><input id="chatInput" placeholder="Ask about GPUs, delivery, build time..." autocomplete="off"><button aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button></form>
+</div>
+<script>
+/* ============ EDIT ME: social links ('#' = not set yet) ============ */
+const GMAIL='<svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>';
+const SOCIALS=[
+ {name:'WhatsApp',icon:'fa-brands fa-whatsapp',url:'https://wa.me/233593216121',color:'#25D366'},
+ {name:'Instagram',icon:'fa-brands fa-instagram',url:'#',color:'#E4405F'},
+ {name:'Facebook',icon:'fa-brands fa-facebook-f',url:'#',color:'#1877F2'},
+ {name:'X (Twitter)',icon:'fa-brands fa-x-twitter',url:'#',color:'#000000'},
+ {name:'TikTok',icon:'fa-brands fa-tiktok',url:'#',color:'#ff0050'},
+ {name:'YouTube',icon:'fa-brands fa-youtube',url:'#',color:'#FF0000'},
+ {name:'LinkedIn',icon:'fa-brands fa-linkedin-in',url:'#',color:'#0A66C2'},
+ {name:'Gmail',svg:true,url:'mailto:gabrielijero2@gmail.com',color:'#EA4335'}
+];
+/* ============ EDIT ME: chatbot business answers ============ */
+const CFG={
+ location:"We're at <b>Community 22 Annex, Ghana</b> — see the map in the Contact section and tap <b>Get Directions</b>. Message us on WhatsApp (+233 593 216 121) before visiting.",
+ delivery:"We deliver <b>nationwide across Ghana</b> by courier or direct dispatch, and you can also arrange pickup. Delivery time and cost depend on your location and order size — wholesale and bulk orders are welcome.",
+ payment:"We accept <b>Mobile Money (MoMo)</b>, <b>bank transfer</b> and <b>cash</b> on pickup/delivery. Custom PC builds usually start with a deposit, with the balance paid before handover. Ask us about flexible options for businesses.",
+ build:"Build time depends on the specs and parts availability:<ul><li><b>In-stock parts:</b> about 2–5 working days (assembly, stress test, Windows setup).</li><li><b>Parts sourced from overseas</b> (flagship GPUs, newest CPUs/boards): about 2–4 weeks, depending on shipping and customs.</li></ul>We confirm an exact timeline once you finalise your specs."
+};
+function renderSocials(){
+ const h=SOCIALS.map(o=>`<a class="social-link" style="--c:${o.color}" href="${o.url}" ${o.url.startsWith('http')?'target="_blank" rel="noopener"':''} title="${o.name}" aria-label="${o.name}">${o.svg?GMAIL:`<i class="${o.icon}"></i>`}</a>`).join('');
+ document.querySelectorAll('#footerSocials,#contactSocials').forEach(e=>e.innerHTML=h);
+}
+renderSocials();
+/* ============ THEME ============ */
+function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}}
+function toggleTheme(){setTheme(document.documentElement.dataset.theme==='light'?'dark':'light')}
+setTheme(document.documentElement.dataset.theme||'dark');
+/* ============ CHATBOT KNOWLEDGE BASE ============ */
+const WA='<a href="https://wa.me/233593216121" target="_blank">WhatsApp us</a>';
+const KB=[
+{k:['hello','hi','hey','good morning','good afternoon','good evening'],a:"Hello! 👋 I'm the IJERO assistant. Ask me about products, delivery, payments, custom PC builds or any PC component (GPU, CPU, motherboard, RAM, storage, PSU, case, cooling)."},
+{k:['thanks','thank you','thx'],a:"You're welcome! 😊 Anything else I can help with?"},
+{k:['where','location','address','located','showroom','visit','pickup'],a:CFG.location},
+{k:['deliver','shipping','dispatch','courier','nationwide'],a:CFG.delivery},
+{k:['pay','payment','momo','mobile money','bank','cash','deposit','installment','instalment'],a:CFG.payment},
+{k:['how long','build time','timeline','lead time','weeks','how many days','when will','overseas','import','sourced','abroad'],a:CFG.build},
+{k:['contact','whatsapp','phone','call','email','number','reach'],a:"Reach us on WhatsApp/phone: <b>+233 593 216 121</b> or email <b>gabrielijero2@gmail.com</b>. "+WA+" for the fastest reply."},
+{k:['warranty','guarantee','return','refund','replace','defect','after sales'],a:"Our components come with <b>manufacturer/supplier warranty</b>, and we help with claims and support. Warranty length varies by part (e.g. GPUs and PSUs often carry longer cover than accessories) — confirm for your item on WhatsApp."},
+{k:['order','how to buy','how do i buy','purchase','buy'],a:"Easy: add items to your <b>Cart</b> and tap <b>Checkout</b> — your order opens in WhatsApp. For custom PCs, tell us your budget and use and we'll quote a build. "+WA+"."},
+{k:['wholesale','bulk','reseller','company','corporate','business'],a:"Yes! We do <b>retail and wholesale</b> — office furniture for teams and bulk PC/accessory orders with better pricing. "+WA+" with quantities for a quote."},
+{k:['custom pc','pc type','types of pc','build a pc','pc build','build me','gaming pc','workstation','office pc','editing pc','streaming pc','ai pc','recommend','what pc'],a:"We build PCs for every need:<ul><li><b>Office/Home:</b> Core i3/i5 or Ryzen 5, 16GB RAM, SSD — no dedicated GPU needed.</li><li><b>Entry gaming (1080p):</b> RTX 3060/4060, Core i5/Ryzen 5, 16GB.</li><li><b>Mid gaming (1440p):</b> RTX 4060 Ti–4070 Super, i5/i7 or Ryzen 7, 32GB.</li><li><b>High-end (4K):</b> RTX 4080 Super/4090, i9 or Ryzen 9/X3D, 32–64GB.</li><li><b>Creator/Workstation:</b> more cores + RAM + fast NVMe, strong GPU for rendering/AI.</li><li><b>Streaming:</b> balanced CPU+GPU with capture-ready I/O.</li></ul>Newer RTX 50-series cards are available on request. Tell me your budget and use!"},
+{k:['budget','cheap','affordable','price range','how much for a pc'],a:"Tell me your <b>budget and what you'll use the PC for</b> (office, gaming, editing…) and we'll match the best parts. Our ready builds range from entry gaming around ₵7,500 up to flagship RTX 4090 rigs above ₵20,000 — see the Products section."},
+{k:['gpu','graphics','video card','rtx','geforce','radeon','nvidia','vram','arc'],a:"<b>GPU guide:</b><ul><li><b>NVIDIA GeForce RTX</b> — best for ray tracing, DLSS and creator/AI work. RTX 4060 (8GB) = 1080p; 4060 Ti/4070 (12GB) = 1440p; 4070 Ti/4080 Super (16GB) = high-refresh 1440p/4K; 4090 (24GB) = no-compromise 4K/AI. RTX 50-series (5060–5090) is the newer generation.</li><li><b>AMD Radeon RX</b> — strong value per ₵ in raster gaming.</li><li><b>Intel Arc</b> — budget-friendly option.</li></ul><b>VRAM</b> matters for 4K, textures and rendering: 8GB min for 1080p, 12–16GB for 1440p+, 24GB+ for pro work. Suffixes: <b>Ti/Super</b> = faster variant."},
+{k:['cpu','processor','intel','ryzen','core i','i3','i5','i7','i9','amd','x3d','socket','core ultra'],a:"<b>CPU guide:</b><ul><li><b>Intel Core i3/i5/i7/i9</b> (and newer Core Ultra) — i5 for gaming/office, i7/i9 for heavy multitasking & editing.</li><li><b>AMD Ryzen 3/5/7/9</b> — Ryzen 5 for value, 7 for gaming/work, 9 for creators; <b>X3D</b> chips (e.g. 7800X3D, 9800X3D) are the best for gaming.</li><li><b>Suffixes:</b> Intel <b>K</b> = unlockable for overclocking, <b>F</b> = no integrated graphics (needs a GPU); AMD <b>X</b> = higher clocks, <b>G</b> = has integrated graphics.</li><li><b>Sockets:</b> Intel LGA1700/LGA1851, AMD AM4/AM5 — the CPU must match the motherboard.</li></ul>"},
+{k:['motherboard','mobo','chipset','z790','b760','h610','z890','b860','b650','x670','x870','a620','am5','lga','atx','itx','matx','micro atx'],a:"<b>Motherboard guide:</b><ul><li><b>Intel:</b> H610 (basic), B760 (best value), Z790/Z890 (overclocking, more PCIe/USB). </li><li><b>AMD:</b> A620 (budget), B650 (best value), X670/X870 (high-end, more lanes).</li><li><b>Sizes:</b> ATX (full features), Micro-ATX (compact, fewer slots), Mini-ITX (tiny builds).</li><li>Check <b>socket</b>, <b>DDR4 vs DDR5</b>, M.2 slots, Wi-Fi/Bluetooth and VRM quality for powerful CPUs.</li></ul>"},
+{k:['ram','memory','ddr4','ddr5','dimm'],a:"<b>RAM:</b> 16GB is the gaming minimum, <b>32GB</b> is the sweet spot for gaming + multitasking, 64GB+ for editing/3D/AI. <b>DDR5</b> (newer platforms, faster) vs <b>DDR4</b> (older, cheaper) — they're not interchangeable, so it must match the motherboard. Use 2 sticks (dual channel) for best speed."},
+{k:['ssd','nvme','storage','hdd','hard drive','sata','m.2','gen4','gen5'],a:"<b>Storage:</b><ul><li><b>NVMe SSD (M.2)</b> — fastest; Gen4 is great value, Gen5 is for enthusiasts.</li><li><b>SATA SSD</b> — good, cheaper, slower than NVMe.</li><li><b>HDD</b> — cheap bulk storage for files/media.</li></ul>Recommended: 1TB NVMe for OS+games, plus an HDD/second SSD if you store a lot."},
+{k:['psu','power supply','wattage','80+','modular','watt'],a:"<b>Power supply (PSU):</b> size it to your GPU+CPU with headroom — about <b>550–650W</b> for RTX 4060-class, <b>750–850W</b> for 4070–4080, <b>1000W+</b> for RTX 4090. Look for <b>80+ Bronze/Gold</b> efficiency and <b>modular</b> cables for tidy builds. A cheap PSU risks your whole PC — we only use reliable brands."},
+{k:['case','chassis','tower','airflow','cabinet','rgb'],a:"<b>PC cases:</b><ul><li><b>Full tower</b> — big GPUs, custom cooling, lots of space.</li><li><b>Mid tower</b> — the popular all-rounder.</li><li><b>Mini-ITX / SFF</b> — compact, needs careful parts choice.</li></ul>Pick <b>mesh-front airflow</b> cases for cooler temps; tempered glass + RGB for looks. Make sure the case fits your GPU length and cooler/radiator."},
+{k:['cooler','cooling','aio','liquid','heatsink','thermal','fan','temperature','overheating'],a:"<b>Cooling:</b><ul><li><b>Air coolers</b> — reliable, quiet and low-maintenance; great for most CPUs.</li><li><b>AIO liquid (240/280/360mm)</b> — better for hot CPUs (i7/i9, Ryzen 9) and looks; bigger radiator = more cooling.</li><li>Add 3+ <b>case fans</b> (front intake, rear/top exhaust) and quality thermal paste.</li></ul>"},
+{k:['compatible','compatibility','bottleneck','upgrade','will it work','match'],a:"We check compatibility for you: CPU socket ↔ motherboard, RAM type (DDR4/DDR5), GPU length ↔ case, PSU wattage & connectors, and cooler/radiator clearance. Send us the parts or your current PC and we'll advise on upgrades and avoid bottlenecks. "+WA+"."},
+{k:['monitor','keyboard','mouse','headset','webcam','peripheral','refresh rate','144hz','165hz'],a:"For monitors choose <b>144–165Hz</b> for gaming and QHD/4K for sharper images (IPS = better colours). We also stock mechanical keyboards, gaming mice, headsets, webcams, monitor arms and more — see <b>Accessories</b>."},
+{k:['windows','operating system','software','linux','activation'],a:"We can install and set up <b>Windows</b>, drivers and your essential software before delivery. Ask us about licensing options."},
+{k:['ups','surge','stabilizer','power cut','electricity','power outage'],a:"Power fluctuations can damage PCs — we recommend a <b>UPS or surge protector/stabilizer</b> with any build, especially for high-end GPUs."},
+{k:['chair','ergonomic','lumbar','mesh','seat'],a:"Our <b>ergonomic chairs</b> have lumbar support, adjustable armrests and breathable mesh (executive leather, gaming and visitor styles too). Browse <b>Ergonomic Chairs</b> in Products."},
+{k:['desk','table','standing','electric desk','height adjustable','l-shaped','sit-stand'],a:"We sell <b>office tables</b> (L-shaped, executive, conference, workstation) and <b>electric height-adjustable desks</b> with memory presets and anti-collision sensors. Browse them in the Products section."}
+];
+const CHIPS=['Location','Delivery','Payment','Custom PC types','Build time','GPU guide','Motherboards','Cooling','Cases','Power supply'];
+function esc(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML}
+function has(m,k){return k.length<=3?new RegExp('\\b'+k.replace('.','\\.')+'\\b').test(m):m.includes(k)}
+function botReply(q){
+ const m=q.toLowerCase();
+ let best=null,bs=0;
+ KB.forEach(e=>{let sc=0;e.k.forEach(k=>{if(has(m,k))sc+=k.length});if(sc>bs){bs=sc;best=e}});
+ const priceQ=/price|cost|how much|available|do you (have|sell)/.test(m);
+ let pb=null,ps=0;
+ products.forEach(p=>{const sc=p.name.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(' ').filter(w=>w.length>2&&m.includes(w)).length;if(sc>ps){ps=sc;pb=p}});
+ if(pb&&ps>=2&&(priceQ||bs===0))return `<b>${pb.name}</b> — ₵${pb.price.toLocaleString()}<br>${pb.desc}<br><a onclick="openModal(${pb.id})">View details</a>`;
+ if(best)return best.a;
+ return "I'm not sure about that one yet 🤔. Try asking about <b>delivery, payment, custom PCs, build time</b> or a component like <b>GPU, CPU, motherboard, RAM, SSD, PSU, case or cooler</b> — or "+WA+" for a human.";
+}
+function addMsg(who,html){const b=document.getElementById('chatMsgs'),d=document.createElement('div');d.className='msg '+who;d.innerHTML=who.startsWith('bot')?'<i class="fa-solid fa-robot msg-ic"></i><div>'+html+'</div>':html;b.appendChild(d);b.scrollTop=b.scrollHeight;return d}
+function ask(q){addMsg('me',esc(q));const t=addMsg('bot typing','Typing…');setTimeout(()=>{t.remove();addMsg('bot',botReply(q))},550)}
+function chatSend(e){e.preventDefault();const i=document.getElementById('chatInput'),v=i.value.trim();if(!v)return;i.value='';ask(v)}
+function toggleChat(){const p=document.getElementById('chatPanel');p.classList.toggle('open');if(p.classList.contains('open'))document.getElementById('chatInput').focus()}
+document.getElementById('chatChips').innerHTML=CHIPS.map(c=>`<button type="button">${c}</button>`).join('');
+document.getElementById('chatChips').onclick=e=>{if(e.target.tagName==='BUTTON')ask(e.target.textContent)};
+addMsg('bot',"Hi 👋 I'm the <b>IJERO Assistant</b>. Ask me about delivery, payments, custom PC builds, how long a build takes, or any component — GPUs, CPUs, motherboards, coolers, cases and more.");
 </script>
 </body>
 </html>
